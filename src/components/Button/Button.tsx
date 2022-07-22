@@ -1,5 +1,7 @@
+import { StyledButton } from "./styles";
+
 export const Button = () => {
     return (
-        <div>Button</div>
+        <StyledButton>Ohhhoooo 🍻 </StyledButton>
     )
 }
