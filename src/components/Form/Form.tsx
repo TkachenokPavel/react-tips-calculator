@@ -11,8 +11,8 @@ export const Form = () => {
         <StyledForm>
             <Title>Welcome to App</Title>
             <Subtitle>Let’s go calculate your tips</Subtitle>
-            <Input type='number' placeholder='Enter bill' />
-            <Input type='number' placeholder='Enter persons' />
+            <Input type='text' placeholder='Enter bill' />
+            <Input type='text' placeholder='Enter persons' />
             <TotalBill>Total: {totalBill.toFixed(2)}$</TotalBill>
             <Button />
         </StyledForm>

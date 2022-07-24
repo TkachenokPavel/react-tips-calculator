@@ -6,11 +6,13 @@ const StyledButton = styled.button`
 
     font-size: 24px;
     line-height: 35px;
-    letter-spacing: -0.3px;
+    letter-spacing: 0.5px;
 
     background-color: #2ED2C9;
     border: none;
     color: #fff;
+
+    cursor: pointer;
 `
 
 export { StyledButton }

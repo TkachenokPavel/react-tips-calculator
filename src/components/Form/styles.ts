@@ -20,6 +20,8 @@ const Title = styled.h2`
 `;
 
 const Subtitle = styled.p`
+    margin-bottom: 45px;
+
     font-size: 24px;
     line-height: 28px;
     letter-spacing: -0.3px;
@@ -30,7 +32,9 @@ const Subtitle = styled.p`
 const TotalBill = styled.p`
     align-self: start;
 
-    font-weight: 500;
+    margin: 45px 0;
+
+    font-weight: 700;
     font-size: 18px;
     line-height: 26px;
 
