@@ -7,6 +7,10 @@ const StyledForm = styled.form`
     align-items: center;
 
     min-width: 320px;
+
+    @media (min-width: 768px) {
+        min-width: 456px;
+    }
 `;
 
 const Title = styled.h2`
@@ -17,6 +21,10 @@ const Title = styled.h2`
     letter-spacing: -0.3px;
 
     color: #000000;
+
+    @media (min-width: 768px) {
+        font-size: 40px;
+    }
 `;
 
 const Subtitle = styled.p`
@@ -27,6 +35,10 @@ const Subtitle = styled.p`
     letter-spacing: -0.3px;
 
     color: rgba(117, 108, 108, 0.57);
+
+    @media (min-width: 768px) {
+        font-size: 32px;
+    }
 `;
 
 const TotalBill = styled.p`
@@ -39,6 +51,10 @@ const TotalBill = styled.p`
     line-height: 26px;
 
     color: #000000;
+
+    @media (min-width: 420px) {
+        font-size: 24px;
+    }
 `;
 
 

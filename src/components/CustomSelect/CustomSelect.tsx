@@ -1,7 +1,22 @@
-import React from 'react'
+import Select from 'react-select';
+import { IOption } from '../../types';
+import { customStyles } from "./styles";
 
-export const CustomSelect = () => {
+interface IProps {
+    value: IOption | undefined | '',
+    options: IOption[],
+    isSearchable: boolean,
+    onChange: (newValue: any) => void
+}
+
+export const CustomSelect = ({ value, options, isSearchable, onChange }: IProps) => {
     return (
-        <div>CustomSelect</div>
+        <Select
+            value={value}
+            styles={customStyles}
+            options={options}
+            isSearchable={isSearchable}
+            onChange={onChange}
+        />
     )
 }
