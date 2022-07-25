@@ -20,10 +20,12 @@ export const Form = () => {
     const [persons, setPersons] = useState<string>('');
     const [isButtonActive, setIsButtonActive] = useState<boolean>(false);
 
-    const handleBill = (value: string): void => {
+    const handleBill = (e: { target: { value: string; } }): void => {
+        const value = e.target.value.replace(/\D/g, "")
         setBill(value)
     }
-    const handlePersons = (value: string): void => {
+    const handlePersons = (e: { target: { value: string; } }): void => {
+        const value = e.target.value.replace(/\D/g, "")
         setPersons(value)
     }
 
