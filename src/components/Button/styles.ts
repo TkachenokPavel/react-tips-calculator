@@ -1,6 +1,8 @@
 import styled from 'styled-components';
 
-const StyledButton = styled.button`
+const StyledButton = styled.button.attrs(({ disabled }) => ({
+    disabled: disabled,
+}))`
     width: 100%;
     padding: 13px 0;
 
@@ -9,6 +11,7 @@ const StyledButton = styled.button`
     letter-spacing: 0.5px;
 
     background-color: #2ED2C9;
+    opacity: ${({ disabled }) => (disabled ? 0.5 : 1)};
     border: none;
     color: #fff;
 

@@ -1,11 +1,12 @@
 import { StyledButton } from "./styles";
 
 interface IProps {
-    onClick: () => void
+    onClick: () => void,
+    isButtonActive: boolean
 }
 
-export const Button = ({ onClick }: IProps) => {
+export const Button = ({ onClick, isButtonActive }: IProps) => {
     return (
-        <StyledButton onClick={onClick} type='button'>Ohhhoooo 🍻 </StyledButton>
+        <StyledButton disabled={isButtonActive} onClick={onClick} type='button' >Ohhhoooo 🍻 </StyledButton>
     )
 }

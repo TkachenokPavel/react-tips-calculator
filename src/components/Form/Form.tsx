@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { Input } from '../Input/Input';
 import { Button } from '../Button/Button'
 import { StyledForm } from './styles'
@@ -18,6 +18,7 @@ export const Form = () => {
     const [selectedOption, setSelectedOption] = useState<number>(10);
     const [bill, setBill] = useState<string>('');
     const [persons, setPersons] = useState<string>('');
+    const [isButtonActive, setIsButtonActive] = useState<boolean>(false);
 
     const handleBill = (value: string): void => {
         setBill(value)
@@ -46,6 +47,11 @@ export const Form = () => {
         setTotal(calculateTips())
     }
 
+    useEffect(() => {
+        bill && persons ? setIsButtonActive(false) : setIsButtonActive(true)
+    }, [bill, persons])
+
+
     return (
         <StyledForm>
             <Title>Welcome to App</Title>
@@ -68,7 +74,7 @@ export const Form = () => {
                 onChange={handleOptionChange}
             />
             <TotalBill>Total: {total}$</TotalBill>
-            <Button onClick={handleButton} />
+            <Button isButtonActive={isButtonActive} onClick={handleButton} />
         </StyledForm>
     )
 }
