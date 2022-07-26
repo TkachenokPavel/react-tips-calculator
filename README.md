@@ -1,4 +1,4 @@
-# React-Country-List
+# React-Tips-Calculator
 This project contains calculation of the total bill including tips.
 
 * [Watch website](https://tkachenokpavel.github.io/react-tips-calculator/)
