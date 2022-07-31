@@ -1,22 +1,26 @@
 import Select from 'react-select';
-import { IOption } from '../../types';
+import { ITipsOption } from '../../types';
 import { customStyles } from "./styles";
 
 interface IProps {
-    value: IOption | undefined | '',
-    options: IOption[],
-    isSearchable: boolean,
-    onChange: (newValue: any) => void
+    tips: ITipsOption,
+    onChange: (newValue: ITipsOption | null) => void
 }
 
-export const CustomSelect = ({ value, options, isSearchable, onChange }: IProps) => {
+export const CustomSelect = ({ tips, onChange }: IProps) => {
+    const options: ITipsOption[] = [
+        { value: 10, label: '10%' },
+        { value: 15, label: '15%' },
+        { value: 20, label: '20%' }
+    ]
+
     return (
         <Select
-            value={value}
             styles={customStyles}
             options={options}
-            isSearchable={isSearchable}
+            defaultValue={tips}
             onChange={onChange}
+            isMulti={false}
         />
     )
 }

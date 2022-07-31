@@ -12,6 +12,11 @@ const StyledInput = styled.input`
     border: none;
     border-radius: 30px;
     color: rgba(117, 108, 108, 0.6);
+
+    &::-webkit-outer-spin-button,
+    ::-webkit-inner-spin-button {
+        -webkit-appearance: none
+    }
 `
 
 export { StyledInput }

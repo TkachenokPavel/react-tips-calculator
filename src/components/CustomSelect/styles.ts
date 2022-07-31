@@ -1,9 +1,12 @@
-export const customStyles: any = {
-    container: (provided: any, state: any) => ({
+import { StylesConfig } from "react-select";
+import { ITipsOption } from "../../types";
+
+export const customStyles: StylesConfig<ITipsOption, boolean> = {
+    container: (provided) => ({
         ...provided,
         width: '100%',
     }),
-    control: (provided: any) => ({
+    control: (provided) => ({
         ...provided,
         padding: '20px 0',
 
@@ -14,19 +17,19 @@ export const customStyles: any = {
 
         cursor: 'pointer',
     }),
-    option: (provided: any, state: any) => ({
+    option: (provided) => ({
         ...provided,
         cursor: 'pointer',
     }),
-    dropdownIndicator: (provided: any, state: any) => ({
+    dropdownIndicator: (provided) => ({
         ...provided,
         color: '#756C6C',
         marginRight: '27px'
     }),
-    indicatorSeparator: (provided: any, state: any) => ({
+    indicatorSeparator: (provided) => ({
         display: 'none'
     }),
-    singleValue: (provided: any, state: any) => ({
+    singleValue: (provided) => ({
         ...provided,
         paddingLeft: '55%',
         fontSize: '18px',

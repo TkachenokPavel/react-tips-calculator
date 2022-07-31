@@ -1,82 +1,64 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, FormEvent } from 'react';
+import { SingleValue } from 'react-select';
 import { Input } from '../Input/Input';
-import { Button } from '../Button/Button'
-import { StyledForm } from './styles'
-import { Title, Subtitle, TotalBill } from "./styles";
+import { Button } from '../Button/Button';
+import { StyledForm, Title, Subtitle, TotalBill } from "./styles";
 import { CustomSelect } from '../CustomSelect/CustomSelect';
-import { IOption } from '../../types';
-
-
-const options: IOption[] = [
-    { value: 10, label: '10%' },
-    { value: 15, label: '15%' },
-    { value: 20, label: '20%' }
-]
+import { ITipsOption } from '../../types';
+import { useInput } from "../../hooks/useInput";
 
 export const Form = () => {
+    const bill = useInput();
+    const persons = useInput();
     const [total, setTotal] = useState<string>('0.00');
-    const [selectedOption, setSelectedOption] = useState<number>(10);
-    const [bill, setBill] = useState<string>('');
-    const [persons, setPersons] = useState<string>('');
-    const [isButtonActive, setIsButtonActive] = useState<boolean>(false);
+    const [tips, setTips] = useState<ITipsOption>({ value: 10, label: '10%' });
+    const [isDisabled, setIsDisabled] = useState<boolean>(true);
 
-    const handleBill = (e: { target: { value: string; } }): void => {
-        const value = e.target.value.replace(/\D/g, "")
-        setBill(value)
-    }
-    const handlePersons = (e: { target: { value: string; } }): void => {
-        const value = e.target.value.replace(/\D/g, "")
-        setPersons(value)
-    }
+    const handleSelect = (option: SingleValue<ITipsOption>): void => {
+        if (option) {
+            setTips(option)
+        }
+    };
 
-    const getValue = () => {
-        return selectedOption ? options.find(currentOption => currentOption.value === selectedOption) : ''
-    }
-
-    const handleOptionChange = (newValue: any): void => {
-        setSelectedOption(newValue.value)
+    const handleSubmit = (event: FormEvent<HTMLFormElement>): void => {
+        event.preventDefault();
+        setTotal(calculateTips())
     }
 
     const calculateTips = (): string => {
-        const billNumber = +bill,
-            personsNumber = +persons,
-            percent = selectedOption,
+        const billNumber = +bill.value,
+            personsNumber = +persons.value,
+            percent = tips.value,
             totalBill = ((billNumber * percent) / 100) * personsNumber + billNumber;
         return totalBill.toFixed(2);
     };
 
-    const handleButton = (): void => {
-        setTotal(calculateTips())
-    }
-
     useEffect(() => {
-        bill && persons ? setIsButtonActive(false) : setIsButtonActive(true)
+        bill && persons ? setIsDisabled(false) : setIsDisabled(true)
     }, [bill, persons])
 
-
     return (
-        <StyledForm>
+        <StyledForm onSubmit={handleSubmit}>
             <Title>Welcome to App</Title>
             <Subtitle>Let’s go calculate your tips</Subtitle>
             <Input
-                value={bill}
-                type='text'
+                type='number'
+                name='bill'
                 placeholder='Enter bill'
-                onChange={handleBill}
+                {...bill}
             />
             <Input
-                value={persons}
-                type='text'
+                type='number'
+                name='persons'
                 placeholder='Enter persons'
-                onChange={handlePersons} />
+                {...persons}
+            />
             <CustomSelect
-                value={getValue()}
-                options={options}
-                isSearchable={false}
-                onChange={handleOptionChange}
+                tips={tips}
+                onChange={handleSelect}
             />
             <TotalBill>Total: {total}$</TotalBill>
-            <Button isButtonActive={isButtonActive} onClick={handleButton} />
+            <Button isDisabled={isDisabled} />
         </StyledForm>
     )
 }

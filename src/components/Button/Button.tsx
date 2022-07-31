@@ -1,12 +1,14 @@
 import { StyledButton } from "./styles";
 
 interface IProps {
-    onClick: () => void,
-    isButtonActive: boolean
+    isDisabled: boolean
 }
 
-export const Button = ({ onClick, isButtonActive }: IProps) => {
+export const Button = ({ isDisabled }: IProps) => {
     return (
-        <StyledButton disabled={isButtonActive} onClick={onClick} type='button' >Ohhhoooo 🍻 </StyledButton>
+        <StyledButton
+            disabled={isDisabled}
+            $isDisabled={isDisabled}
+            type='submit' >Ohhhoooo 🍻 </StyledButton>
     )
 }

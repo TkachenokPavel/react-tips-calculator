@@ -1,8 +1,6 @@
 import styled from 'styled-components';
 
-const StyledButton = styled.button.attrs(({ disabled }) => ({
-    disabled: disabled,
-}))`
+const StyledButton = styled.button<{ $isDisabled: boolean }>`
     width: 100%;
     padding: 13px 0;
 
@@ -11,7 +9,7 @@ const StyledButton = styled.button.attrs(({ disabled }) => ({
     letter-spacing: 0.5px;
 
     background-color: #2ED2C9;
-    opacity: ${({ disabled }) => (disabled ? 0.5 : 1)};
+    opacity: ${({ $isDisabled }) => ($isDisabled ? 0.5 : 1)};
     border: none;
     color: #fff;
 

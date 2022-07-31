@@ -1,11 +1,9 @@
 import { Form } from "./components/Form/Form";
-import { GlobalStyle } from "./GlobalStyles";
-import { Wrapper } from "./styles";
+import { Wrapper } from "./ui/base";
 
 export const App = () => {
   return (
     <Wrapper>
-      <GlobalStyle />
       <Form />
     </Wrapper>
   );
