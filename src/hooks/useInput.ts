@@ -1,8 +1,10 @@
 import { ChangeEvent, useState } from "react"
-import { IUseInput } from "../types";
 
 
-export const useInput = (initialValue: string = ''): IUseInput => {
+export const useInput = (initialValue: string = ''): {
+    readonly value: string;
+    readonly onChange: (event: React.ChangeEvent<HTMLInputElement>) => void;
+} => {
     const [value, setValue] = useState<string>(initialValue);
 
     const onChange = (event: ChangeEvent<HTMLInputElement>): void => {
